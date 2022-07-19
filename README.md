@@ -1,5 +1,5 @@
 ## Fabric 1.19 - Tutorial Series
-The complete source code for my Fabric 1.19 modding tutorial series! If you haven't already watched the series, [click here](https://www.youtube.com/TechnoVisionTV). We attempt to cover the entire API, including topics like sharding, slash commands, listeners, buttons, modals, and more! For more information on the Fabric API, check out the wiki [here](https://fabricmc.net/wiki/start).
+The complete source code for my Fabric 1.19 modding tutorial series! If you haven't already watched the series, [click here](https://www.youtube.com/TechnoVisionTV). We attempt to cover the entire API, including adding your own custom items, blocks, mobs, world generation, and more! For more information on the Fabric API, check out the wiki [here](https://fabricmc.net/wiki/start).
 
 ### Episode List:
 
