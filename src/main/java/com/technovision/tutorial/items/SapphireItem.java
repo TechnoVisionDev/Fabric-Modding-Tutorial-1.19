@@ -43,17 +43,17 @@ public class SapphireItem extends Item {
      */
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        // Ensure client-side only
+        // Check if block is grass
         World world = context.getWorld();
-        PlayerEntity user = context.getPlayer();
-        if (!world.isClient() && user != null) {
-            // Check if block is grass
-            Block block = world.getBlockState(context.getBlockPos()).getBlock();
-            if (block == Blocks.GRASS_BLOCK) {
-                // Set grass block to lapis block
+        Block block = world.getBlockState(context.getBlockPos()).getBlock();
+        if (block == Blocks.GRASS_BLOCK) {
+            if (!world.isClient()) {
+                // Update block and item stack on server
                 world.setBlockState(context.getBlockPos(), Blocks.LAPIS_BLOCK.getDefaultState());
-                user.playSound(SoundEvents.BLOCK_WOOL_PLACE, 1.0f, 1.0f);
-                user.getStackInHand(context.getHand()).decrement(1);
+                context.getPlayer().getStackInHand(context.getHand()).decrement(1);
+            } else {
+                // Play sound on client
+                context.getPlayer().playSound(SoundEvents.BLOCK_WOOL_PLACE, 1.0f, 1.0f);
             }
         }
         return super.useOnBlock(context);
@@ -71,9 +71,11 @@ public class SapphireItem extends Item {
                 // Set sheep color to blue and play sound
                 SheepEntity sheep = (SheepEntity) entity;
                 sheep.setColor(DyeColor.BLUE);
-                user.playSound(SoundEvents.BLOCK_WOOL_PLACE, 1.0f, 1.0f);
-                user.getStackInHand(hand).decrement(1);
+                if (!user.isCreative()) {
+                    user.getStackInHand(hand).decrement(1);
+                }
             } else {
+                // Send message in chat
                 user.sendMessage(Text.literal("Try using that item on a sheep ;)"));
             }
         }
