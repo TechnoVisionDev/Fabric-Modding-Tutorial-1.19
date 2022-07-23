@@ -1,4 +1,4 @@
-package com.technovision.tutorial.items;
+package com.technovision.tutorial.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;

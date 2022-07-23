@@ -1,4 +1,6 @@
 {
   "item.tutorial.ruby": "Ruby",
-  "item.tutorial.sapphire": "Sapphire"
+  "item.tutorial.sapphire": "Sapphire",
+
+  "block.tutorial.ruby_block": "Ruby Block"
 }
